@@ -2,19 +2,18 @@ import taxes.TaxDebit;
 import taxes.TaxDebitMinusCredit;
 import taxes.TaxSystem;
 
+
 public class Company {
 
     protected String title;
-    protected int debit = 0;
-    protected int credit = 0;
-    protected String taxSystem;
-    protected Deal[] deals;
+    private int debit = 0;
+    private int credit = 0;
+    protected TaxSystem taxSystem;
 
 
-    public Company(String title, String taxSystem, Deal[] deals) {
+    public Company(String title, TaxSystem taxSystem) {
         this.title = title;
         this.taxSystem = taxSystem;
-        this.deals = deals;
     }
 
     public void shiftMoney(int amount) {
@@ -27,16 +26,16 @@ public class Company {
         }
     }
 
-    public void setTaxSystem(String taxSystem) {
+    public void setTaxSystem(TaxSystem taxSystem) {
         this.taxSystem = taxSystem;
     }
 
     public void payTaxes() {
         int result = 0;
-        if ("Debit".equals(taxSystem)) {
+        if (taxSystem instanceof TaxDebit) {
             TaxSystem taxSystem1 = new TaxDebit();
             result = taxSystem1.calcTaxFor(debit, credit);
-        } else if ("DebitMinusCredit".equals(taxSystem)) {
+        } else if (taxSystem instanceof TaxDebitMinusCredit) {
             TaxSystem taxSystem1 = new TaxDebitMinusCredit();
             result = taxSystem1.calcTaxFor(debit, credit);
         }
