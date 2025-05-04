@@ -6,13 +6,15 @@ import taxes.TaxSystem;
 public class Company {
 
     protected String title;
-    private int debit = 0;
-    private int credit = 0;
+    private int debit;
+    private int credit;
     protected TaxSystem taxSystem;
 
 
-    public Company(String title, TaxSystem taxSystem) {
+    public Company(String title, int debit, int credit, TaxSystem taxSystem) {
         this.title = title;
+        this.debit = debit;
+        this.credit = credit;
         this.taxSystem = taxSystem;
     }
 

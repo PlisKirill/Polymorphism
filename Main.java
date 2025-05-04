@@ -14,7 +14,7 @@ public class Main {
                     "Заклепки", 10000)
         };
 
-        Company company = new Company("KDV-Групп", new TaxDebitMinusCredit());
+        Company company = new Company("KDV-Групп", 0, 0, new TaxDebitMinusCredit());
 //        company.shiftMoney(20000);
 //        company.shiftMoney(-5000);
         company.setTaxSystem(new TaxDebit());
