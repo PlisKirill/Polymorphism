@@ -33,14 +33,7 @@ public class Company {
     }
 
     public void payTaxes() {
-        int result = 0;
-        if (taxSystem instanceof TaxDebit) {
-            TaxSystem taxSystem1 = new TaxDebit();
-            result = taxSystem1.calcTaxFor(debit, credit);
-        } else if (taxSystem instanceof TaxDebitMinusCredit) {
-            TaxSystem taxSystem1 = new TaxDebitMinusCredit();
-            result = taxSystem1.calcTaxFor(debit, credit);
-        }
+        int result = taxSystem.calcTaxFor(debit, credit);
         System.out.printf("Компания %s уплатила налог в размере: %d руб.%n", title, result);
         debit = 0;
         credit = 0;
@@ -50,8 +43,8 @@ public class Company {
     public int applyDeals(Deal[] deals) {
         for (int i = 0; i < deals.length; i++) {
            Deal deal = deals[i];
-           debit += deal.debitChange;
-           credit += deal.creditChange;
+           debit += deal.getDebitChange();
+           credit += deal.getCreditChange();
         }
         int difference = debit - credit;
         payTaxes();

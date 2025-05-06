@@ -9,4 +9,11 @@ public class Deal {
         this.debitChange = debitChange;
         this.creditChange = creditChange;
     }
+
+    public int getDebitChange() {
+        return debitChange;
+    }
+    public int getCreditChange() {
+        return creditChange;
+    }
 }
